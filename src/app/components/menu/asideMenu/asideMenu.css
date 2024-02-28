@@ -1,0 +1,58 @@
+.aside {
+  height: 100vh;
+  background-color: var(--primary-color);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  justify-content: space-between;
+  transition: 0.25s ease;
+}
+
+.normal-aside {
+  width: 280px;
+}
+
+.minimized-aside {
+  width: 85px;
+}
+
+.aside .aside-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aside .aside-top .head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  position: relative;
+}
+
+.aside .aside-top .head .minimizer-btn {
+  background-color: var(--white);
+  font-size: 20px;
+  color: var(--primary-color);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 70px;
+  right: -20px;
+  box-shadow: 2.5px 2.5px 2.5px lightgray;
+  cursor: pointer;
+}
+
+.aside .aside-top .head h2 {
+  font-family: "Amita";
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.aside .aside-bottom {
+  margin-bottom: 2rem;
+}
