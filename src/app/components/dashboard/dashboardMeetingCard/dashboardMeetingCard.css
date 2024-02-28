@@ -1,0 +1,14 @@
+.meeting-item {
+  display: flex;
+  gap: 2rem;
+  background-color: var(--white);
+  padding: 0.25rem 1rem;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meeting-item img {
+  width: 40px;
+  height: 40px;
+}

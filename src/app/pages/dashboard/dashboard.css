@@ -1,0 +1,35 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 1rem;
+}
+
+.dashboard .left {
+  padding: 1rem 0 0 0;
+}
+
+.dashboard .left .cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.dashboard .left .meetings {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard .left .meetings .add-meeting-button {
+  border: 2px solid var(--primary-color);
+  border-radius: 4px;
+  padding: 8px;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.dashboard .left .meetings .add-meeting-button:hover {
+  color: var(--white);
+  background-color: var(--primary-color);
+}

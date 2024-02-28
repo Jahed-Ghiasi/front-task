@@ -1,0 +1,9 @@
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-head h4 {
+  margin: 0;
+}

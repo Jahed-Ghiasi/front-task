@@ -1,0 +1,23 @@
+.card-item {
+  padding: 1rem;
+  background-color: var(--white);
+  border-radius: 20px;
+  box-shadow: 2.5px 2.5px 2.5px lightgray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-item .icon {
+  font-size: 24px;
+  color: var(--primary-color);
+}
+
+.card-item .value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.card-item .title {
+  font-size: 10px;
+}
