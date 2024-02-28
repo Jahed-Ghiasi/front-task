@@ -10,7 +10,7 @@ import { IMenuItem } from "types/index";
 const menuItems: IMenuItem[] = [
   {
     title: "Dashboard",
-    link: "/",
+    link: "/dashboard",
     icon: <RxDashboard />,
   },
   {

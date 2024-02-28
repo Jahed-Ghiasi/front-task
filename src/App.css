@@ -6,6 +6,7 @@
 
 .app .page {
   width: 100%;
-  padding: 1.5rem;
+  height: 2500px;
+  padding: 1.5rem 3rem;
   background-color: var(--secondary-color);
 }
