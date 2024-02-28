@@ -9,7 +9,7 @@ interface IProps {}
 const Menu = ({}: IProps) => {
   const rendred_menu = useMemo(() => {
     return menuItems.map((menuItem: IMenuItem) => {
-      return <MenuItem item={menuItem} />;
+      return <MenuItem key={menuItem.link} item={menuItem} />;
     });
   }, [menuItems]);
 
