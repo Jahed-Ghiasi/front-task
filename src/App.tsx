@@ -1,15 +1,18 @@
 import "./App.css";
 import AsideMenu from "src/app/components/menu/asideMenu/asideMenu";
 import { BrowserRouter } from "react-router-dom";
+import { ContextProvider } from "src/app/utils/context";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="app">
-        <AsideMenu />
-        <div className="page"></div>
-      </div>
-    </BrowserRouter>
+    <ContextProvider>
+      <BrowserRouter>
+        <div className="app">
+          <AsideMenu />
+          <div className="page"></div>
+        </div>
+      </BrowserRouter>
+    </ContextProvider>
   );
 }
 

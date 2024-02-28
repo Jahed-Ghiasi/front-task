@@ -4,17 +4,21 @@ import MenuItem from "../menuItem/menuItem";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { useState } from "react";
 import clsx from "clsx";
+import { useAppContext } from "src/app/utils/context";
 
 const AsideMenu = () => {
-  const [isMinimized, setIsMinimized] = useState<boolean>(false);
+  const { isMinimizedAsideMenu, setIsMinimizedAsideMenu } = useAppContext();
+
+  const toggleAsideMenu = () => {
+    setIsMinimizedAsideMenu(!isMinimizedAsideMenu);
+  }
 
   return (
     <div
       className={clsx(
         "aside",
-        isMinimized ? "minimized-aside" : "normal-aside"
+        isMinimizedAsideMenu ? "minimized-aside" : "normal-aside"
       )}
     >
       <div className="aside-top">
@@ -22,14 +26,12 @@ const AsideMenu = () => {
           <h2>Drop</h2>
           <span
             className="minimizer-btn"
-            onClick={() => {
-              setIsMinimized(!isMinimized);
-            }}
+            onClick={toggleAsideMenu}
           >
-            {!isMinimized ? <IoIosArrowBack /> : <IoIosArrowForward />}
+            {!isMinimizedAsideMenu ? <IoIosArrowBack /> : <IoIosArrowForward />}
           </span>
         </div>
-        <Menu isMinimized={isMinimized} />
+        <Menu />
       </div>
       <div className="aside-bottom">
         <MenuItem
@@ -38,7 +40,6 @@ const AsideMenu = () => {
             icon: <IoSettingsOutline />,
             link: "/setting",
           }}
-          isMinimized={isMinimized}
         />
       </div>
     </div>

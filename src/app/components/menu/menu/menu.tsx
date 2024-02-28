@@ -4,16 +4,14 @@ import MenuItem from "../menuItem/menuItem";
 import "./menu.css";
 import { IMenuItem } from "types/index";
 
-interface IProps {
-  isMinimized: boolean;
-}
+interface IProps {}
 
-const Menu = ({ isMinimized }: IProps) => {
+const Menu = ({}: IProps) => {
   const rendred_menu = useMemo(() => {
     return menuItems.map((menuItem: IMenuItem) => {
-      return <MenuItem item={menuItem} isMinimized={isMinimized} />;
+      return <MenuItem item={menuItem} />;
     });
-  }, [menuItems, isMinimized]);
+  }, [menuItems]);
 
   return <div className="menu-items">{rendred_menu}</div>;
 };
