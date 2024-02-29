@@ -1,21 +1,21 @@
-export interface IDashboardInfo {
-  meetings: IMeeting[];
+import { ChartData } from "chart.js";
+
+export interface IStatistics {
+  new_clients: {
+    number: number;
+    change_percent: number;
+  };
+  invoice_overdue: {
+    number: number;
+    change_percent: number;
+  };
   cards: {
     bank_balance: number;
     tax: number;
     card_spending: number;
     today_employees: number;
   };
-  data: {
-    labels: string[];
-    datasets: {
-      label: string;
-      data: number[];
-      borderColor: string;
-      lineTension: number;
-      pointBackgroundColor: string;
-    }[];
-  };
+  data: ChartData<"line">;
 }
 
 export interface IMeeting {

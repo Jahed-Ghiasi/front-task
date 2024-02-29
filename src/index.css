@@ -2,6 +2,10 @@
   --primary-color: #6941c6;
   --secondary-color: #f2f4f7;
   --white: #fff;
+  --success: green;
+  --success-light: rgba(0, 255, 0, 0.1);
+  --error: red;
+  --error-light: rgba(255, 0, 0, 0.1);
 }
 
 body {

@@ -1,15 +1,16 @@
 import { Line } from "react-chartjs-2";
-import { CategoryScale } from "chart.js";
+import { CategoryScale, ChartOptions } from "chart.js";
 import Chart from "chart.js/auto";
 
 interface IProps {
   data: any;
+  options?: ChartOptions<"line">;
 }
 
-const LinearGraph = ({ data }: IProps) => {
+const LinearGraph = ({ data, options }: IProps) => {
   Chart.register(CategoryScale);
 
-  return <Line data={data} />;
+  return <Line data={data} options={options} />;
 };
 
 export default LinearGraph;
