@@ -49,7 +49,7 @@ const meeting_items: IMeeting[] = [
     subject: "Metting Scheduled",
   },
   {
-    id: 5,
+    id: 6,
     name: "Livia Stanton",
     date: 1709107392092,
     image:
@@ -57,7 +57,7 @@ const meeting_items: IMeeting[] = [
     subject: "Metting Scheduled",
   },
   {
-    id: 5,
+    id: 7,
     name: "Livia Stanton",
     date: 1709107392092,
     image:
@@ -103,6 +103,8 @@ export type AppContextType = {
   setMeetings: React.Dispatch<React.SetStateAction<IMeeting[]>>;
   statistics?: IStatistics;
   setStatistics: React.Dispatch<React.SetStateAction<IStatistics | undefined>>;
+  isAddMeetingModal: boolean;
+  setIsAddMeetingModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const contextDefaultValues: AppContextType = {
@@ -111,6 +113,8 @@ const contextDefaultValues: AppContextType = {
   meetings: [],
   setMeetings: () => {},
   setStatistics: () => {},
+  isAddMeetingModal: false,
+  setIsAddMeetingModal: () => {},
 };
 
 export const AppContext = createContext<AppContextType>(contextDefaultValues);
@@ -126,7 +130,7 @@ type Props = {
 export function ContextProvider({ children }: Props) {
   const [isMinimizedAsideMenu, setIsMinimizedAsideMenu] =
     useState<boolean>(false);
-
+  const [isAddMeetingModal, setIsAddMeetingModal] = useState<boolean>(false);
   const [meetings, setMeetings] = useState<IMeeting[]>([]);
   const [statistics, setStatistics] = useState<IStatistics | undefined>(
     undefined
@@ -144,6 +148,8 @@ export function ContextProvider({ children }: Props) {
     setMeetings,
     statistics,
     setStatistics,
+    isAddMeetingModal,
+    setIsAddMeetingModal,
   };
 
   return (

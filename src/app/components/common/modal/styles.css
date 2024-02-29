@@ -1,0 +1,87 @@
+.holder {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 99000;
+}
+
+.backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+}
+
+.main {
+  position: relative;
+  max-height: 100%;
+  margin: auto;
+  background-color: white;
+  background-clip: padding-box;
+  z-index: 9999;
+}
+
+.title-container {
+  width: 100%;
+  justify-content: space-between;
+  padding: 16px;
+  display: flex;
+}
+
+.title-container svg {
+  color: #fff;
+  background-color: lightgray;
+  border-radius: 100%;
+  padding: 6px;
+  font-size: 28px;
+}
+
+.title-container svg:hover {
+  background-color: purple;
+}
+
+.title-container button {
+  padding-inline-end: 0;
+}
+
+.title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.logo {
+  margin-inline: auto;
+}
+
+@media screen and (max-width: 992px) {
+  .main {
+    max-width: 90vw !important;
+    overflow: unset !important;
+    max-height: unset;
+  }
+
+  .title-container {
+    margin-bottom: 0;
+    align-items: center;
+  }
+
+  .container {
+    padding-block: 64px;
+    overflow: auto;
+  }
+}

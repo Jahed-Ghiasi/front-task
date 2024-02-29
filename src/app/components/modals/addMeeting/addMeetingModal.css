@@ -1,0 +1,128 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 1rem;
+}
+
+.container .stages-container {
+  padding: 0 1rem;
+  border-right: 2px dotted var(--blue-light-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.container .stages-container .stage {
+  display: grid;
+  align-items: center;
+  justify-content: flex-start;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.container .stages-container .stage .number {
+  height: 100%;
+  width: 100%;
+  background-color: var(--blue-light-2);
+  color: var(--blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container .stages-container .stage .connector::after {
+  content: "";
+  display: block;
+  height: 25px;
+  border-left: 2px dotted var(--blue-light-1);
+  position: absolute;
+  top: 42px;
+}
+
+.container .stages-container .stage .title-des {
+  display: flex;
+  flex-direction: column;
+  color: var(--gray);
+}
+
+.container .stages-container .stage .title-des .description {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.container .stages-container .activeStage .number {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.container .stages-container .activeStage .title-des .st-title {
+  font-weight: bold;
+  color: black;
+}
+
+.container .stage-form {
+  padding: 1rem 2rem;
+}
+
+.container .stage-form form {
+  height: 100%;
+}
+
+.container .stage-form .form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.container .stage-form .form .fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 280px;
+}
+
+.container .stage-form .form .fields input {
+  width: calc(100% - 1.5rem);
+}
+
+.container .stage-form .btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container .stage-form .ended-btns {
+  justify-content: flex-end;
+}
+
+.course-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.course-title .up {
+  font-weight: 600;
+}
+
+.course-title .down {
+  font-size: 12px;
+}
+
+.container .preview {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.container .preview .preview-item .key {
+  color: var(--gray);
+}
+.container .preview .preview-item .value {
+  font-weight: 500;
+}

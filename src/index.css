@@ -2,10 +2,15 @@
   --primary-color: #6941c6;
   --secondary-color: #f2f4f7;
   --white: #fff;
+  --white-1: #eaecf0;
   --success: green;
   --success-light: rgba(0, 255, 0, 0.1);
   --error: red;
   --error-light: rgba(255, 0, 0, 0.1);
+  --blue: #2e90fa;
+  --blue-light-1: #84caff;
+  --blue-light-2: #d1e9ff;
+  --gray: #667085;
 }
 
 body {
@@ -15,4 +20,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.error {
+  color: var(--error);
+  font-size: 12px;
+}
+
+.vital-input::after {
+  content: " *";
+  color: var(--error);
+}
+
+.formInput {
+  display: block;
+  border-radius: 6px;
+  border: 1px solid var(--blue-light-1);
+  padding: 10px;
+  margin: 5px 0px;
+  background: var(--secondary-color);
+  color: var(--gray);
+  outline: none;
+}
+
+.formInput:focus {
+  background-color: var(--white);
 }

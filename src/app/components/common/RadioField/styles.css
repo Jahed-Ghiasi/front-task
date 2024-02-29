@@ -1,0 +1,36 @@
+.radio-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.radio-input .radio-detail {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.radio-input .radio-icon {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.radio-input input {
+  appearance: none;
+}
+
+.radio-input .circle {
+  border: 5px solid var(--white-1);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--white-1);
+}
+
+.radio-input .selected {
+  border-color: var(--blue);
+}

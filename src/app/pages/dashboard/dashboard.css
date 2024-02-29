@@ -50,19 +50,6 @@
   gap: 8px;
 }
 
-.dashboard .left .meetings .add-meeting-button {
-  border: 2px solid var(--primary-color);
-  border-radius: 4px;
-  padding: 8px;
-  font-weight: 500;
-  color: var(--primary-color);
-}
-
-.dashboard .left .meetings .add-meeting-button:hover {
-  color: var(--white);
-  background-color: var(--primary-color);
-}
-
 .dashboard .right {
   background-color: var(--white);
   border-radius: 1rem;

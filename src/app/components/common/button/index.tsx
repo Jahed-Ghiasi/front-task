@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import React, { ReactNode } from "react";
-import "./button.css";
+import "./styles.css";
 
 interface IProps {
+  type?: "contained" | "outlined";
   text?: string;
   children?: ReactNode;
   className?: string;
@@ -13,6 +14,7 @@ interface IProps {
 }
 
 const Button = ({
+  type = "contained",
   text,
   children,
   className,
@@ -23,7 +25,7 @@ const Button = ({
 }: IProps) => {
   return (
     <button
-      className={clsx("btn", className)}
+      className={clsx("btn", type, className)}
       onClick={onClick}
       type={btnType}
       disabled={disabled}

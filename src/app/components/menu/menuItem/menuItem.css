@@ -18,7 +18,7 @@
   background-color: var(--white);
 }
 
-.active .title:after {
+.active .link-title:after {
   content: "";
   display: block;
   background-color: var(--white);

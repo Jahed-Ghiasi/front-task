@@ -1,4 +1,4 @@
-import "./sectionHead.css";
+import "./styles.css";
 
 interface IProps {
   title: string;

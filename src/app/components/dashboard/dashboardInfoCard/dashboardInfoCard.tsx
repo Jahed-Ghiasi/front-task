@@ -11,7 +11,7 @@ const DashboardInfoCard = ({ icon, title, value }: IProps) => {
     <div className="card-item">
       <span className="icon">{icon}</span>
       <span className="value">{value}</span>
-      <span className="title">{title}</span>
+      <span className="card-title">{title}</span>
     </div>
   );
 };

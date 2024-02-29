@@ -15,7 +15,9 @@ const MenuItem = ({ item }: IProps) => {
     <NavLink className="menuItem" to={link}>
       <span className="identifier" />
       <span className="icon">{icon}</span>
-      {!isMinimizedAsideMenu ? <span className="title">{title}</span> : null}
+      {!isMinimizedAsideMenu ? (
+        <span className="link-title">{title}</span>
+      ) : null}
     </NavLink>
   );
 };

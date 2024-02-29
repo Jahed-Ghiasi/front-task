@@ -1,0 +1,59 @@
+.stages-container {
+  padding: 0 1rem;
+  border-right: 2px dotted var(--blue-light-1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.stages-container .stage {
+  display: grid;
+  align-items: center;
+  justify-content: flex-start;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  position: relative;
+  padding: 0 2rem;
+}
+
+.stages-container .stage .number {
+  height: 100%;
+  width: 100%;
+  background-color: var(--blue-light-2);
+  color: var(--blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stages-container .stage .connector::after {
+  content: "";
+  display: block;
+  height: 25px;
+  border-left: 2px dotted var(--blue-light-1);
+  position: absolute;
+  top: 42px;
+}
+
+.stages-container .stage .title-des {
+  display: flex;
+  flex-direction: column;
+  color: var(--gray);
+}
+
+.stages-container .stage .title-des .description {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.stages-container .activeStage .number {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.stages-container .activeStage .title-des .st-title {
+  font-weight: bold;
+  color: black;
+}

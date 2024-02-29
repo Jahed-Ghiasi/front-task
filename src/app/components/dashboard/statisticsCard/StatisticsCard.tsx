@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import SectionHead from "src/app/components/common/sectionHead/sectionHead";
+import SectionHead from "src/app/components/common/sectionHead";
 import "./statisticsCard.css";
 
 interface IProps {

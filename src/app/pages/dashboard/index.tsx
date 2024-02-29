@@ -5,12 +5,13 @@ import { RiBankCardLine } from "react-icons/ri";
 import { HiOutlineReceiptTax } from "react-icons/hi";
 import { IoPersonOutline } from "react-icons/io5";
 import DashboardMeetingCard from "src/app/components/dashboard/dashboardMeetingCard/dashboardMeetingCard";
-import SectionHead from "src/app/components/common/sectionHead/sectionHead";
-import Button from "src/app/components/common/button/button";
+import SectionHead from "src/app/components/common/sectionHead";
+import Button from "src/app/components/common/button";
 import LinearGraph from "src/app/components/common/graph/LinearGraph";
 import { ChartOptions } from "chart.js";
 import StatisticsCard from "src/app/components/dashboard/statisticsCard/StatisticsCard";
 import { useAppContext } from "src/app/utils/context";
+import AddMeetingModal from "src/app/components/modals/addMeeting/AddMeetingModal";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -64,7 +65,7 @@ const lineChartOptions: ChartOptions<"line"> = {
 };
 
 const Dashboard = () => {
-  const { meetings, statistics } = useAppContext();
+  const { meetings, statistics, setIsAddMeetingModal } = useAppContext();
 
   return (
     <>
@@ -85,7 +86,7 @@ const Dashboard = () => {
               <DashboardInfoCard
                 icon={<IoPersonOutline />}
                 title="Employees working today"
-                value={`$${statistics.cards.today_employees}`}
+                value={`${statistics.cards.today_employees}`}
               />
               <DashboardInfoCard
                 icon={<RiBankCardLine />}
@@ -121,7 +122,11 @@ const Dashboard = () => {
             <SectionHead
               title="Meeting Time"
               element={
-                <Button text="Add Metting" className="add-meeting-button" />
+                <Button
+                  type="outlined"
+                  text="Add Metting"
+                  onClick={() => setIsAddMeetingModal(true)}
+                />
               }
             />
             {meetings.map((meeting: IMeeting) => {
@@ -133,6 +138,7 @@ const Dashboard = () => {
         </div>
         <div className="right">right box</div>
       </div>
+      <AddMeetingModal />
     </>
   );
 };
