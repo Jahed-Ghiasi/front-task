@@ -21,6 +21,7 @@ interface IProps {
   value: number[];
   multiSelect?: boolean;
   searchable?: boolean;
+  showSelecteds?: boolean;
 }
 
 const SelectField = ({
@@ -30,6 +31,7 @@ const SelectField = ({
   multiSelect,
   label,
   searchable,
+  showSelecteds,
 }: IProps) => {
   const [optionsData, setOptionsData] = useState<ISelectFieldOption[]>(options);
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
@@ -84,17 +86,7 @@ const SelectField = ({
 
   return (
     <div className="select">
-      <div
-        ref={inputRef}
-        className="input"
-        style={{
-          justifyContent: isOptionsOpen
-            ? !selectedIds.length
-              ? "flex-end"
-              : "space-between"
-            : "space-between",
-        }}
-      >
+      <div ref={inputRef} className="input">
         <span
           className={clsx(
             isOptionsOpen || selectedIds.length ? "select-label" : ""
@@ -102,7 +94,7 @@ const SelectField = ({
         >
           {label}
         </span>
-        {selectedIds.length ? (
+        {selectedIds.length && showSelecteds ? (
           <div className="selected-options">
             {options
               .filter((option: ISelectFieldOption) =>
@@ -112,7 +104,7 @@ const SelectField = ({
                 const { id, label, image } = option;
                 return (
                   <div className="selected-option" key={id}>
-                    <img src={image} alt={label} />
+                    {image ? <img src={image} alt={label} /> : null}
                     <span>{label}</span>
                     <span
                       className="remove-btn"
@@ -161,7 +153,7 @@ const SelectField = ({
                       <MdCheckBoxOutlineBlank />
                     </span>
                   )}
-                  <img src={image} alt={label} />
+                  {image ? <img src={image} alt={label} /> : null}
                   <span>{label}</span>
                 </div>
               );

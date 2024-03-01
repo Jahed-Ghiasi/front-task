@@ -16,6 +16,8 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
+  min-height: 20px;
+  background-color: var(--white);
 }
 
 .select .input .select-label {
@@ -37,6 +39,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   z-index: 9999;
+  max-width: 85%;
 }
 
 .select .input .selected-options .selected-option {
@@ -61,9 +64,11 @@
 }
 
 .select .input .options-box-toggler {
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
+  position: absolute;
+  right: 5px;
 }
 
 .select .options-box {

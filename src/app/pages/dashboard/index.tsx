@@ -13,6 +13,7 @@ import StatisticsCard from "src/app/components/dashboard/statisticsCard/Statisti
 import { useAppContext } from "src/app/utils/context";
 import AddMeetingModal from "src/app/components/modals/addMeeting";
 import AddToDoModal from "src/app/components/modals/addToDo";
+import SelectField from "src/app/components/common/SelectField";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -72,6 +73,23 @@ const Dashboard = () => {
     <>
       <div className="dashboard">
         <div className="left">
+          <div style={{ width: "190px" }}>
+            <SelectField
+              label="Employees Invoved"
+              options={[
+                { id: 1, label: "MenuItem" },
+                { id: 2, label: "MenuItem" },
+                { id: 3, label: "MenuItem" },
+                { id: 4, label: "MenuItem" },
+                { id: 5, label: "MenuItem" },
+                { id: 6, label: "MenuItem" },
+                { id: 7, label: "MenuItem" },
+              ]}
+              multiSelect
+              searchable
+              value={[]}
+            />
+          </div>
           {statistics ? (
             <div className="cards">
               <DashboardInfoCard

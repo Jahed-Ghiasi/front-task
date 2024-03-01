@@ -79,7 +79,7 @@ const AddToDoModal = () => {
     <Modal
       title="Add to do"
       backdrop
-      visible={true}
+      visible={false}
       onHiding={() => {}}
       width={400}
       height={550}
@@ -111,6 +111,7 @@ const AddToDoModal = () => {
                 onChange={(value: number[]) => setFieldValue("persons", value)}
                 multiSelect
                 searchable
+                showSelecteds
               />
             </div>
             <div className="btns">
