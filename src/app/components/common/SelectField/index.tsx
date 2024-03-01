@@ -7,6 +7,7 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { IoClose } from "react-icons/io5";
 import SearchInput from "../SearchInput";
 import clsx from "clsx";
+import Button from "../button";
 
 export interface ISelectFieldOption {
   id: number;
@@ -18,6 +19,7 @@ interface IProps {
   label: string;
   options: ISelectFieldOption[];
   onChange?: (value: number[]) => void;
+  onApply?: (value: number[]) => void;
   value: number[];
   multiSelect?: boolean;
   searchable?: boolean;
@@ -26,6 +28,7 @@ interface IProps {
 
 const SelectField = ({
   onChange,
+  onApply,
   options,
   value,
   multiSelect,
@@ -159,6 +162,13 @@ const SelectField = ({
               );
             })}
           </div>
+          {onApply ? (
+            <Button
+              btnType="button"
+              text="Apply"
+              onClick={() => onApply(selectedIds)}
+            />
+          ) : null}
           <div className="options-bar">
             <span>Selected: {selectedIds.length}</span>
             <span className="clear-btn" onClick={clearSelecteds}>

@@ -86,6 +86,9 @@ const Dashboard = () => {
                 { id: 7, label: "MenuItem" },
               ]}
               multiSelect
+              onApply={(value: number[]) => {
+                console.log(value);
+              }}
               searchable
               value={[]}
             />
