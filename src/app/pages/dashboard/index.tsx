@@ -1,5 +1,5 @@
 import { IMeeting } from "types/dashboard.types";
-import "./dashboard.css";
+import "./styles.css";
 import DashboardInfoCard from "src/app/components/dashboard/dashboardInfoCard/dashboardInfoCard";
 import { RiBankCardLine } from "react-icons/ri";
 import { HiOutlineReceiptTax } from "react-icons/hi";
@@ -12,6 +12,7 @@ import { ChartOptions } from "chart.js";
 import StatisticsCard from "src/app/components/dashboard/statisticsCard/StatisticsCard";
 import { useAppContext } from "src/app/utils/context";
 import AddMeetingModal from "src/app/components/modals/addMeeting";
+import AddToDoModal from "src/app/components/modals/addToDo";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -139,6 +140,7 @@ const Dashboard = () => {
         <div className="right">right box</div>
       </div>
       <AddMeetingModal />
+      <AddToDoModal />
     </>
   );
 };

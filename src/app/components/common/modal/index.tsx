@@ -2,6 +2,7 @@ import { CSSProperties, ReactNode, useEffect } from "react";
 import "./styles.css";
 
 export interface IModalProps {
+  title?: string;
   visible?: boolean;
   onHiding: () => void;
   width?: string | number;
@@ -9,26 +10,23 @@ export interface IModalProps {
   min_height?: string | number;
   max_height?: string | number;
   children?: ReactNode;
-  hideCloseBtn?: boolean;
   overflow?: string;
   backdrop?: boolean;
-  showLogo?: boolean;
   className?: string;
   backdropStyles?: CSSProperties;
 }
 
 const Modal = ({
+  title,
   onHiding,
   backdrop,
   backdropStyles,
   children,
   className,
   height,
-  hideCloseBtn,
   max_height,
   min_height,
   overflow,
-  showLogo,
   visible,
   width,
 }: IModalProps) => {
@@ -59,6 +57,7 @@ const Modal = ({
           maxHeight: max_height,
         }}
       >
+        {title ? <h3>{title}</h3> : null}
         {children}
       </div>
     </div>
