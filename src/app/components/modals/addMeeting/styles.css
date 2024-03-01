@@ -28,7 +28,8 @@
 }
 
 .container .stage-form .form .fields input {
-  width: calc(100% - 1.5rem);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .container .stage-form .btns {

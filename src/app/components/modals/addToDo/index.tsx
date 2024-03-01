@@ -5,6 +5,7 @@ import { Form, Formik } from "formik";
 import SelectField, {
   ISelectFieldOption,
 } from "src/app/components/common/SelectField";
+import Button from "src/app/components/common/button";
 
 interface IInit {
   title: string;
@@ -91,24 +92,35 @@ const AddToDoModal = () => {
       >
         {({ values, touched, errors, handleSubmit, setFieldValue }) => (
           <Form className="addTodo-form">
-            <InputField
-              label="Write a Title"
-              required
-              id="title"
-              name="title"
-              value={values.title}
-              errors={errors}
-              touched={touched}
-              onChange={(value: string) => setFieldValue("title", value)}
-            />
-            <SelectField
-              label="Add Person"
-              value={values.persons}
-              options={select_options}
-              onChange={(value: number[]) => setFieldValue("persons", value)}
-              multiSelect
-              searchable
-            />
+            <div className="fields">
+              <InputField
+                placeholder="Write a Title"
+                isMovingLabel
+                inputClassName="title-input"
+                id="title"
+                name="title"
+                value={values.title}
+                errors={errors}
+                touched={touched}
+                onChange={(value: string) => setFieldValue("title", value)}
+              />
+              <SelectField
+                label="Add Person"
+                value={values.persons}
+                options={select_options}
+                onChange={(value: number[]) => setFieldValue("persons", value)}
+                multiSelect
+                searchable
+              />
+            </div>
+            <div className="btns">
+              <Button btnType="button" text="Cancel" type="outlined" />
+              <Button
+                btnType="button"
+                text="Accept"
+                onClick={() => handleSubmit()}
+              />
+            </div>
           </Form>
         )}
       </Formik>

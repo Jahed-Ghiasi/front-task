@@ -1,7 +1,23 @@
 .addTodo-form {
-    padding: 0 1.5rem;
+  height: 100%;
+  max-height: 450px;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.addTodo-form input {
-    width: calc(100% - 1.3rem);
+.addTodo-form .title-input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--gray);
+  border-radius: 4px;
+  outline: none;
+}
+
+.addTodo-form .btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
 }
