@@ -1,35 +1,20 @@
 import clsx from "clsx";
 import "./styles.css";
-import { FormikErrors } from "formik";
 
 interface IProps {
   icon?: JSX.Element;
   title: JSX.Element;
   value: any;
-  id: number;
   selected: any;
-  setFieldValue: (
-    field: string,
-    value: any,
-    shouldValidate?: boolean | undefined
-  ) => Promise<void | FormikErrors<any>>;
-  name: string;
+  onChange?: (value: any) => void;
 }
 
-const RadioField = ({
-  id,
-  icon,
-  title,
-  value,
-  selected,
-  setFieldValue,
-  name,
-}: IProps) => {
+const RadioField = ({ icon, title, value, selected, onChange }: IProps) => {
   return (
     <div
       className="radio-input"
       onClick={() => {
-        setFieldValue(name, value);
+        onChange && onChange(value);
       }}
     >
       <div className="radio-detail">

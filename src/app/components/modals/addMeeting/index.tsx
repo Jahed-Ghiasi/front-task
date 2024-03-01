@@ -1,15 +1,16 @@
 import { useState } from "react";
 import Modal from "src/app/components/common/modal";
 import { useAppContext } from "src/app/utils/context";
-import "./addMeetingModal.css";
+import "./styles.css";
 import clsx from "clsx";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import Button from "src/app/components/common/button";
 import * as Yup from "yup";
 import RadioField from "src/app/components/common/RadioField";
 import { BiSolidConversation } from "react-icons/bi";
 import { TbTargetArrow } from "react-icons/tb";
 import FormStagePresenter from "src/app/components/common/FormStagePresenter";
+import InputField from "src/app/components/common/InputField";
 
 interface IInit {
   email: string;
@@ -133,7 +134,7 @@ const AddMeetingModal = () => {
         <div className="stage-form">
           <Formik
             initialValues={initialValues}
-            /* validationSchema={validationSchema} */
+            validationSchema={validationSchema}
             onSubmit={(values: any) => {
               console.log(values);
               setIsAddMeetingModal(false);
@@ -146,32 +147,25 @@ const AddMeetingModal = () => {
                   <div>
                     {stageTitle === stage_title.email ? (
                       <div className="fields">
+                        <InputField
+                          label="Email"
+                          required
+                          id="email"
+                          name="email"
+                          value={values.email}
+                          errors={errors}
+                          touched={touched}
+                          onChange={(value: string) =>
+                            setFieldValue("email", value)
+                          }
+                        />
                         <div className="">
-                          <label className="vital-input" htmlFor="email">
-                            Email
-                          </label>
-                          <Field
-                            id="email"
-                            name="email"
-                            className="formInput"
-                            value={(values as any).email}
-                          />
-                          {errors.email && touched.email ? (
-                            <span className="error">
-                              {(errors as any).email}
-                            </span>
-                          ) : null}
-                        </div>
-                        <div className="">
-                          <label className="vital-input" htmlFor="date">
-                            Date
-                          </label>
+                          <label className="vital-input">Date</label>
                           {date_options.map((option: any) => {
                             return (
                               <RadioField
                                 key={option.id}
                                 icon={option.icon}
-                                id={option.id}
                                 selected={values.date}
                                 title={
                                   <span>
@@ -181,8 +175,9 @@ const AddMeetingModal = () => {
                                   </span>
                                 }
                                 value={option.value}
-                                name="date"
-                                setFieldValue={setFieldValue}
+                                onChange={(value: number) =>
+                                  setFieldValue("date", value)
+                                }
                               />
                             );
                           })}
@@ -197,15 +192,12 @@ const AddMeetingModal = () => {
                     {stageTitle === stage_title.course ? (
                       <div className="fields">
                         <div className="">
-                          <label className="vital-input" htmlFor="course">
-                            Course
-                          </label>
+                          <label className="vital-input">Course</label>
                           {course_options.map((option: any) => {
                             return (
                               <RadioField
                                 key={option.id}
                                 icon={option.icon}
-                                id={option.id}
                                 selected={values.course}
                                 title={
                                   <div className="course-title">
@@ -216,8 +208,9 @@ const AddMeetingModal = () => {
                                   </div>
                                 }
                                 value={option.id}
-                                name="course"
-                                setFieldValue={setFieldValue}
+                                onChange={(value: number) =>
+                                  setFieldValue("course", value)
+                                }
                               />
                             );
                           })}

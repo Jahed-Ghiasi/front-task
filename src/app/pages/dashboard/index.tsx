@@ -11,7 +11,7 @@ import LinearGraph from "src/app/components/common/graph/LinearGraph";
 import { ChartOptions } from "chart.js";
 import StatisticsCard from "src/app/components/dashboard/statisticsCard/StatisticsCard";
 import { useAppContext } from "src/app/utils/context";
-import AddMeetingModal from "src/app/components/modals/addMeeting/AddMeetingModal";
+import AddMeetingModal from "src/app/components/modals/addMeeting";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
