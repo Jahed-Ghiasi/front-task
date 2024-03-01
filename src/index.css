@@ -22,6 +22,27 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* scrollbar width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* scrollbar track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* scrollbar handle */
+::-webkit-scrollbar-thumb {
+  background: #afafaf;
+  border-radius: 4px;
+}
+
+/* (scrollbar) Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+
 .error {
   color: var(--error);
   font-size: 12px;
