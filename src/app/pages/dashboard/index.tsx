@@ -14,6 +14,7 @@ import { useAppContext } from "src/app/utils/context";
 import AddMeetingModal from "src/app/components/modals/addMeeting";
 import AddToDoModal from "src/app/components/modals/addToDo";
 import SelectField from "src/app/components/common/SelectField";
+import NotificationBar from "src/app/components/dashboard/NotificationBar";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -158,7 +159,9 @@ const Dashboard = () => {
             })}
           </div>
         </div>
-        <div className="right">right box</div>
+        <div className="right">
+          <NotificationBar />
+        </div>
       </div>
       <AddMeetingModal />
       <AddToDoModal />
