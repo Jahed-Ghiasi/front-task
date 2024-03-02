@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import "./styles.css";
+import Icon from "../icon";
 
 interface IProps {
   icon?: JSX.Element;
@@ -18,7 +19,7 @@ const RadioField = ({ icon, title, value, selected, onChange }: IProps) => {
       }}
     >
       <div className="radio-detail">
-        {icon ? <span className="radio-icon">{icon}</span> : null}
+        {icon ? <Icon className="radio-icon" children={icon} /> : null}
         {title}
       </div>
       <span className={clsx("circle", selected === value && "selected")} />

@@ -8,6 +8,7 @@ import { IoClose } from "react-icons/io5";
 import SearchInput from "../SearchInput";
 import clsx from "clsx";
 import Button from "../button";
+import Icon from "../icon";
 
 export interface ISelectFieldOption {
   id: number;
@@ -109,23 +110,23 @@ const SelectField = ({
                   <div className="selected-option" key={id}>
                     {image ? <img src={image} alt={label} /> : null}
                     <span>{label}</span>
-                    <span
+                    <Icon
+                      isButton
                       className="remove-btn"
                       onClick={() => removeSelected(id)}
-                    >
-                      <IoClose />
-                    </span>
+                      children={<IoClose />}
+                    />
                   </div>
                 );
               })}
           </div>
         ) : null}
-        <span
+        <Icon
           className="options-box-toggler"
+          isButton
           onClick={() => setIsOptionsOpen(!isOptionsOpen)}
-        >
-          {isOptionsOpen ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
-        </span>
+          children={isOptionsOpen ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
+        />
       </div>
       {isOptionsOpen ? (
         <div
@@ -148,13 +149,12 @@ const SelectField = ({
                   onClick={() => handleSelection(id)}
                 >
                   {selectedIds.includes(id) ? (
-                    <span className="checked-icon">
-                      <MdCheckBox />
-                    </span>
+                    <Icon className="checked-icon" children={<MdCheckBox />} />
                   ) : (
-                    <span className="unchecked-icon">
-                      <MdCheckBoxOutlineBlank />
-                    </span>
+                    <Icon
+                      className="unchecked-icon"
+                      children={<MdCheckBoxOutlineBlank />}
+                    />
                   )}
                   {image ? <img src={image} alt={label} /> : null}
                   <span>{label}</span>

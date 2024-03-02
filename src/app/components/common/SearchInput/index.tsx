@@ -1,5 +1,6 @@
 import { IoIosSearch } from "react-icons/io";
 import "./styles.css";
+import Icon from "../icon";
 
 interface IProps {
   onChange?: (value: string) => void;
@@ -8,9 +9,7 @@ interface IProps {
 const SearchInput = ({ onChange }: IProps) => {
   return (
     <div className="searchbar">
-      <span>
-        <IoIosSearch />
-      </span>
+      <Icon className="search-icon" children={<IoIosSearch />} />
       <input
         type="text"
         onChange={(e) => onChange && onChange(e.target.value)}

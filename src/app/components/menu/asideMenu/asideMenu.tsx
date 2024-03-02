@@ -6,13 +6,14 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import clsx from "clsx";
 import { useAppContext } from "src/app/utils/context";
+import Icon from "src/app/components/common/icon";
 
 const AsideMenu = () => {
   const { isMinimizedAsideMenu, setIsMinimizedAsideMenu } = useAppContext();
 
   const toggleAsideMenu = () => {
     setIsMinimizedAsideMenu(!isMinimizedAsideMenu);
-  }
+  };
 
   return (
     <div
@@ -24,12 +25,13 @@ const AsideMenu = () => {
       <div className="aside-top">
         <div className="head">
           <h2>Drop</h2>
-          <span
+          <Icon
+            children={
+              !isMinimizedAsideMenu ? <IoIosArrowBack /> : <IoIosArrowForward />
+            }
             className="minimizer-btn"
             onClick={toggleAsideMenu}
-          >
-            {!isMinimizedAsideMenu ? <IoIosArrowBack /> : <IoIosArrowForward />}
-          </span>
+          />
         </div>
         <Menu />
       </div>

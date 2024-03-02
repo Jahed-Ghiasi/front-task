@@ -1,3 +1,4 @@
+import Icon from "src/app/components/common/icon";
 import "./dashboardInfoCard.css";
 
 interface IProps {
@@ -9,7 +10,7 @@ interface IProps {
 const DashboardInfoCard = ({ icon, title, value }: IProps) => {
   return (
     <div className="card-item">
-      <span className="icon">{icon}</span>
+      <Icon children={icon} className="icon" />
       <span className="value">{value}</span>
       <span className="card-title">{title}</span>
     </div>

@@ -58,14 +58,11 @@
 }
 
 .select .input .selected-options .selected-option .remove-btn {
-  display: flex;
-  align-items: center;
   font-size: 12px;
 }
 
 .select .input .options-box-toggler {
   padding: 0 0.5rem;
-  cursor: pointer;
   font-size: 20px;
   position: absolute;
   right: 5px;
@@ -101,15 +98,11 @@
 }
 
 .select .options .option .checked-icon {
-  display: flex;
-  align-items: center;
   font-size: 20px;
   color: var(--primary-color);
 }
 
 .select .options .option .unchecked-icon {
-  display: flex;
-  align-items: center;
   font-size: 20px;
 }
 

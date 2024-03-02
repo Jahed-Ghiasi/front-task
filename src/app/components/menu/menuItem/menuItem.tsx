@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./menuItem.css";
 import { IMenuItem } from "types/index";
 import { useAppContext } from "src/app/utils/context";
+import Icon from "src/app/components/common/icon";
 
 interface IProps {
   item: IMenuItem;
@@ -14,7 +15,7 @@ const MenuItem = ({ item }: IProps) => {
   return (
     <NavLink className="menuItem" to={link}>
       <span className="identifier" />
-      <span className="icon">{icon}</span>
+      <Icon children={icon} className="icon" />
       {!isMinimizedAsideMenu ? (
         <span className="link-title">{title}</span>
       ) : null}
