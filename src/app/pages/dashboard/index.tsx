@@ -15,6 +15,7 @@ import AddMeetingModal from "src/app/components/modals/addMeeting";
 import AddToDoModal from "src/app/components/modals/addToDo";
 import SelectField from "src/app/components/common/SelectField";
 import NotificationBar from "src/app/components/dashboard/NotificationBar";
+import StatusBar from "src/app/components/dashboard/StatusBar";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -161,6 +162,7 @@ const Dashboard = () => {
         </div>
         <div className="right">
           <NotificationBar />
+          <StatusBar />
         </div>
       </div>
       <AddMeetingModal />

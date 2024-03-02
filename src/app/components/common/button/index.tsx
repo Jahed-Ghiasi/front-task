@@ -11,6 +11,10 @@ interface IProps {
   btnType?: "button" | "reset" | "submit";
   disabled?: boolean;
   title?: string;
+  fullWidth?: boolean;
+  style?: React.CSSProperties;
+  width?: string | number;
+  height?: string | number;
 }
 
 const Button = ({
@@ -22,6 +26,10 @@ const Button = ({
   btnType = "button",
   disabled,
   title,
+  fullWidth,
+  height,
+  style,
+  width,
 }: IProps) => {
   return (
     <button
@@ -30,6 +38,11 @@ const Button = ({
       type={btnType}
       disabled={disabled}
       title={title}
+      style={{
+        width: fullWidth ? "100%" : width,
+        height: height,
+        ...style,
+      }}
     >
       {text || children}
     </button>

@@ -1,0 +1,40 @@
+.status-bar {
+  border: 1px solid var(--blue-light-2);
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.status-bar h3 {
+  margin: 0;
+}
+
+.status-bar .status-section {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.status-bar .status-section .status-title {
+  font-weight: 700;
+}
+
+.status-bar .status-section .status-des {
+  font-weight: 700;
+  color: var(--gray);
+}
+
+.status-bar .progress-presenter {
+  height: 20px;
+  background-color: var(--gray-light);
+  border-radius: 1rem;
+}
+
+.status-bar .progress-presenter .progress-range {
+  background-color: var(--primary-color);
+  height: 100%;
+  border-radius: inherit;
+}
