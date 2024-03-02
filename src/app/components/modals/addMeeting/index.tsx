@@ -11,6 +11,7 @@ import { BiSolidConversation } from "react-icons/bi";
 import { TbTargetArrow } from "react-icons/tb";
 import FormStagePresenter from "src/app/components/common/FormStagePresenter";
 import InputField from "src/app/components/common/InputField";
+import { dateString } from "src/app/utils/index";
 
 interface IInit {
   email: string;
@@ -168,13 +169,7 @@ const AddMeetingModal = () => {
                                 key={option.id}
                                 icon={option.icon}
                                 selected={values.date}
-                                title={
-                                  <span>
-                                    {new Date(option.value).toLocaleString(
-                                      "IR-fa"
-                                    )}
-                                  </span>
-                                }
+                                title={<span>{dateString(option.value)}</span>}
                                 value={option.value}
                                 onChange={(value: number) =>
                                   setFieldValue("date", value)

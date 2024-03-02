@@ -78,12 +78,16 @@ const AddToDoModal = () => {
 
   const { isAddTodoModal, setIsAddTodoModal } = useAppContext();
 
+  function CloseModal() {
+    setIsAddTodoModal(false);
+  }
+
   return (
     <Modal
       title="Add to do"
       backdrop
       visible={isAddTodoModal}
-      onHiding={() => setIsAddTodoModal(false)}
+      onHiding={CloseModal}
       width={400}
       height={550}
     >
@@ -118,7 +122,12 @@ const AddToDoModal = () => {
               />
             </div>
             <div className="btns">
-              <Button btnType="button" text="Cancel" type="outlined" />
+              <Button
+                btnType="button"
+                text="Cancel"
+                type="outlined"
+                onClick={CloseModal}
+              />
               <Button
                 btnType="button"
                 text="Accept"

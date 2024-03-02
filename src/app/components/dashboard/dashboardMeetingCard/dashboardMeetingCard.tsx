@@ -1,5 +1,6 @@
 import { IMeeting } from "types/dashboard.types";
 import "./dashboardMeetingCard.css";
+import { dateString } from "src/app/utils/index";
 
 interface IProps {
   meeting: IMeeting;
@@ -13,12 +14,7 @@ const DashboardMeetingCard = ({ meeting }: IProps) => {
       <img src={image} alt={name} />
       <span>{name}</span>
       <span>{subject}</span>
-      <span>{`${new Date(date).toLocaleString("default", {
-        month: "short",
-        day: "numeric",
-      })} at ${new Date(date).toLocaleString("default", {
-        hour: "2-digit",
-      })}`}</span>
+      <span>{dateString(date)}</span>
     </div>
   );
 };
