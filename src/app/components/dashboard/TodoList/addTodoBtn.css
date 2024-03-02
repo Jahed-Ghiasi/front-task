@@ -1,0 +1,13 @@
+.add-todo-btn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.add-todo-btn .add-todo-icon {
+  background-color: var(--primary-color-light-2);
+  padding: 0.5rem;
+  border-radius: 1rem;
+}

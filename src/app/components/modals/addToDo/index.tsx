@@ -6,6 +6,7 @@ import SelectField, {
   ISelectFieldOption,
 } from "src/app/components/common/SelectField";
 import Button from "src/app/components/common/button";
+import { useAppContext } from "src/app/utils/context";
 
 interface IInit {
   title: string;
@@ -75,12 +76,14 @@ const AddToDoModal = () => {
     persons: [],
   };
 
+  const { isAddTodoModal, setIsAddTodoModal } = useAppContext();
+
   return (
     <Modal
       title="Add to do"
       backdrop
-      visible={false}
-      onHiding={() => {}}
+      visible={isAddTodoModal}
+      onHiding={() => setIsAddTodoModal(false)}
       width={400}
       height={550}
     >

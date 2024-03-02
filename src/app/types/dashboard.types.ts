@@ -25,3 +25,9 @@ export interface IMeeting {
   name: string;
   date: number;
 }
+
+export interface ITodo {
+  id: number;
+  title: string;
+  date: number;
+}

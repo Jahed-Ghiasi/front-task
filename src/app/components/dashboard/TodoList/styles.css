@@ -1,0 +1,16 @@
+.todos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.todos h3 {
+  margin: 0;
+}
+
+.todos .todos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.5rem;
+}

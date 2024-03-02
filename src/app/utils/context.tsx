@@ -105,6 +105,8 @@ export type AppContextType = {
   setStatistics: React.Dispatch<React.SetStateAction<IStatistics | undefined>>;
   isAddMeetingModal: boolean;
   setIsAddMeetingModal: React.Dispatch<React.SetStateAction<boolean>>;
+  isAddTodoModal: boolean;
+  setIsAddTodoModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const contextDefaultValues: AppContextType = {
@@ -115,6 +117,8 @@ const contextDefaultValues: AppContextType = {
   setStatistics: () => {},
   isAddMeetingModal: false,
   setIsAddMeetingModal: () => {},
+  isAddTodoModal: false,
+  setIsAddTodoModal: () => {},
 };
 
 export const AppContext = createContext<AppContextType>(contextDefaultValues);
@@ -131,6 +135,7 @@ export function ContextProvider({ children }: Props) {
   const [isMinimizedAsideMenu, setIsMinimizedAsideMenu] =
     useState<boolean>(false);
   const [isAddMeetingModal, setIsAddMeetingModal] = useState<boolean>(false);
+  const [isAddTodoModal, setIsAddTodoModal] = useState<boolean>(false);
   const [meetings, setMeetings] = useState<IMeeting[]>([]);
   const [statistics, setStatistics] = useState<IStatistics | undefined>(
     undefined
@@ -150,6 +155,8 @@ export function ContextProvider({ children }: Props) {
     setStatistics,
     isAddMeetingModal,
     setIsAddMeetingModal,
+    isAddTodoModal,
+    setIsAddTodoModal,
   };
 
   return (

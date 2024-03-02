@@ -13,7 +13,12 @@ const DashboardMeetingCard = ({ meeting }: IProps) => {
       <img src={image} alt={name} />
       <span>{name}</span>
       <span>{subject}</span>
-      <span>{new Date(date).toDateString()}</span>
+      <span>{`${new Date(date).toLocaleString("default", {
+        month: "short",
+        day: "numeric",
+      })} at ${new Date(date).toLocaleString("default", {
+        hour: "2-digit",
+      })}`}</span>
     </div>
   );
 };

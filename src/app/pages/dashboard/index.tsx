@@ -16,6 +16,7 @@ import AddToDoModal from "src/app/components/modals/addToDo";
 import SelectField from "src/app/components/common/SelectField";
 import NotificationBar from "src/app/components/dashboard/NotificationBar";
 import StatusBar from "src/app/components/dashboard/StatusBar";
+import TodoList from "src/app/components/dashboard/TodoList";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -163,6 +164,13 @@ const Dashboard = () => {
         <div className="right">
           <NotificationBar />
           <StatusBar />
+          <TodoList
+            todos={[
+              { id: 1, title: "Run payroll", date: 1709107392092 },
+              { id: 2, title: "Review time of request", date: 1709107392092 },
+              { id: 3, title: "Sign board resulation", date: 1709107392092 },
+            ]}
+          />
         </div>
       </div>
       <AddMeetingModal />
