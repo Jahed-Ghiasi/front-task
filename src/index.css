@@ -7,6 +7,7 @@
   --white-1: #eaecf0;
   --success: green;
   --success-light: rgba(0, 255, 0, 0.1);
+  --success-light-2: #d6e6df;
   --error: red;
   --error-light: rgba(255, 0, 0, 0.1);
   --blue: #2e90fa;
@@ -70,4 +71,9 @@ body {
 
 .formInput:focus {
   background-color: var(--white);
+}
+
+/* react-toast success style */
+.Toastify__toast--success {
+  background: var(--success-light-2) !important;
 }

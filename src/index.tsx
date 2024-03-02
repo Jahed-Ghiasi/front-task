@@ -5,6 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { ContextProvider } from "src/app/utils/context";
+import { ToastContainer } from "react-toastify";
+import Icon from "src/app/components/common/icon";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,6 +16,12 @@ root.render(
   <React.StrictMode>
     <ContextProvider>
       <BrowserRouter>
+        <ToastContainer
+          position="bottom-right"
+          hideProgressBar
+          closeButton={false}
+          icon={<Icon children={<IoIosCheckmarkCircleOutline />} />}
+        />
         <App />
       </BrowserRouter>
     </ContextProvider>

@@ -70,7 +70,7 @@ const lineChartOptions: ChartOptions<"line"> = {
 };
 
 const Dashboard = () => {
-  const { meetings, statistics, setIsAddMeetingModal } = useAppContext();
+  const { meetings, statistics, setIsAddMeetingModal, todos } = useAppContext();
 
   return (
     <>
@@ -164,13 +164,7 @@ const Dashboard = () => {
         <div className="right">
           <NotificationBar />
           <StatusBar />
-          <TodoList
-            todos={[
-              { id: 1, title: "Run payroll", date: 1709107392092 },
-              { id: 2, title: "Review time of request", date: 1709107392092 },
-              { id: 3, title: "Sign board resulation", date: 1709107392092 },
-            ]}
-          />
+          <TodoList todos={todos} />
         </div>
       </div>
       <AddMeetingModal />

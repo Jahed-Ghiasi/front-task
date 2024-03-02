@@ -5,7 +5,7 @@ import {
   useState,
   useEffect,
 } from "react";
-import { IStatistics, IMeeting } from "types/dashboard.types";
+import { IStatistics, IMeeting, ITodo } from "types/dashboard.types";
 
 const meeting_items: IMeeting[] = [
   {
@@ -96,11 +96,19 @@ const dashboardStatistics: IStatistics = {
   },
 };
 
+const todo_list: ITodo[] = [
+  { id: 1, title: "Run payroll", date: 1709107392092 },
+  { id: 2, title: "Review time of request", date: 1709107392092 },
+  { id: 3, title: "Sign board resulation", date: 1709107392092 },
+];
+
 export type AppContextType = {
   isMinimizedAsideMenu: boolean;
   setIsMinimizedAsideMenu: React.Dispatch<React.SetStateAction<boolean>>;
   meetings: IMeeting[];
   setMeetings: React.Dispatch<React.SetStateAction<IMeeting[]>>;
+  todos: ITodo[];
+  setTodos: React.Dispatch<React.SetStateAction<ITodo[]>>;
   statistics?: IStatistics;
   setStatistics: React.Dispatch<React.SetStateAction<IStatistics | undefined>>;
   isAddMeetingModal: boolean;
@@ -114,6 +122,8 @@ const contextDefaultValues: AppContextType = {
   setIsMinimizedAsideMenu: () => {},
   meetings: [],
   setMeetings: () => {},
+  todos: [],
+  setTodos: () => {},
   setStatistics: () => {},
   isAddMeetingModal: false,
   setIsAddMeetingModal: () => {},
@@ -137,6 +147,7 @@ export function ContextProvider({ children }: Props) {
   const [isAddMeetingModal, setIsAddMeetingModal] = useState<boolean>(false);
   const [isAddTodoModal, setIsAddTodoModal] = useState<boolean>(false);
   const [meetings, setMeetings] = useState<IMeeting[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([]);
   const [statistics, setStatistics] = useState<IStatistics | undefined>(
     undefined
   );
@@ -144,6 +155,7 @@ export function ContextProvider({ children }: Props) {
   useEffect(() => {
     setMeetings(meeting_items);
     setStatistics(dashboardStatistics);
+    setTodos(todo_list);
   }, []);
 
   const value = {
@@ -151,6 +163,8 @@ export function ContextProvider({ children }: Props) {
     setIsMinimizedAsideMenu,
     meetings,
     setMeetings,
+    todos,
+    setTodos,
     statistics,
     setStatistics,
     isAddMeetingModal,

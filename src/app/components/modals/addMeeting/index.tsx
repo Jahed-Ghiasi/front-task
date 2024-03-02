@@ -12,6 +12,8 @@ import { TbTargetArrow } from "react-icons/tb";
 import FormStagePresenter from "src/app/components/common/FormStagePresenter";
 import InputField from "src/app/components/common/InputField";
 import { dateString } from "src/app/utils/index";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface IInit {
   email: string;
@@ -137,7 +139,7 @@ const AddMeetingModal = () => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={(values: any) => {
-              console.log(values);
+              toast.success("Meeting Successfuly Created", {});
               setIsAddMeetingModal(false);
               setStageTitle(stage_title.email);
             }}
