@@ -1,14 +1,13 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./styles.css";
-import { MdCheckBox } from "react-icons/md";
-import { MdCheckBoxOutlineBlank } from "react-icons/md";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
-import { IoClose } from "react-icons/io5";
 import SearchInput from "../SearchInput";
 import clsx from "clsx";
-import Button from "../button";
+import Button from "../Button";
 import Icon from "../icon";
+import Option from "./components/Option";
+import SelectedOption from "./components/SelectedOption";
 
 export interface ISelectFieldOption {
   id: number;
@@ -23,7 +22,7 @@ interface IProps {
   onApply?: (value: number[]) => void;
   value: number[];
   multiSelect?: boolean;
-  searchable?: boolean;
+  isSearchable?: boolean;
   showSelecteds?: boolean;
 }
 
@@ -34,7 +33,7 @@ const SelectField = ({
   value,
   multiSelect,
   label,
-  searchable,
+  isSearchable,
   showSelecteds,
 }: IProps) => {
   const [optionsData, setOptionsData] = useState<ISelectFieldOption[]>(options);
@@ -49,25 +48,28 @@ const SelectField = ({
   }, [selectedIds]);
 
   useEffect(() => {
-    if (searchable) {
-      if (!searchTerm) {
-        setOptionsData(options);
-        return;
-      }
-      const timeoutId = setTimeout(() => {
-        setOptionsData(
-          options.filter((item: ISelectFieldOption) => {
-            if (item.label.toLowerCase().includes(searchTerm.toLowerCase())) {
-              return item;
-            }
-          })
-        );
-      }, 1000);
-
-      return () => {
-        clearTimeout(timeoutId);
-      };
+    if (!isSearchable) {
+      return;
     }
+
+    if (!searchTerm) {
+      setOptionsData(options);
+      return;
+    }
+
+    const timeoutId = setTimeout(() => {
+      setOptionsData(
+        options.filter((item: ISelectFieldOption) => {
+          if (item.label.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return item;
+          }
+        })
+      );
+    }, 1000);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [searchTerm]);
 
   const allSelectedWithDetails: ISelectFieldOption[] = useMemo(() => {
@@ -76,23 +78,32 @@ const SelectField = ({
     );
   }, [selectedIds]);
 
-  function handleSelection(id: number) {
-    if (multiSelect) {
-      selectedIds.includes(id)
-        ? removeSelected(id)
-        : setSelectedIds([...selectedIds, id]);
-    } else {
-      selectedIds.includes(id) ? clearSelecteds() : setSelectedIds([id]);
-    }
-  }
+  const handleSelection = useCallback(
+    (id: number) => {
+      if (multiSelect) {
+        selectedIds.includes(id)
+          ? removeSelected(id)
+          : setSelectedIds([...selectedIds, id]);
+      } else {
+        selectedIds.includes(id) ? clearSelecteds() : setSelectedIds([id]);
+      }
+    },
+    [selectedIds, multiSelect]
+  );
 
-  function removeSelected(id: number) {
-    setSelectedIds(selectedIds.filter((item: number) => item !== id));
-  }
+  const removeSelected = useCallback(
+    (id: number) => {
+      setSelectedIds(selectedIds.filter((selected: number) => selected !== id));
+    },
+    [selectedIds]
+  );
 
-  function clearSelecteds() {
-    setSelectedIds([]);
-  }
+  const clearSelecteds = useCallback(() => setSelectedIds([]), []);
+
+  const handleOptionsBoxPresence = useCallback(
+    () => setIsOptionsOpen(!isOptionsOpen),
+    [isOptionsOpen]
+  );
 
   return (
     <div className="select">
@@ -107,18 +118,12 @@ const SelectField = ({
         {selectedIds.length && showSelecteds ? (
           <div className="selected-options">
             {allSelectedWithDetails.map((option: ISelectFieldOption) => {
-              const { id, label, image } = option;
               return (
-                <div className="selected-option" key={id}>
-                  {image ? <img src={image} alt={label} /> : null}
-                  <span>{label}</span>
-                  <Icon
-                    isButton
-                    className="remove-btn"
-                    onClick={() => removeSelected(id)}
-                    children={<IoClose />}
-                  />
-                </div>
+                <SelectedOption
+                  key={option.id}
+                  option={option}
+                  onRemove={(id: number) => removeSelected(id)}
+                />
               );
             })}
           </div>
@@ -126,7 +131,7 @@ const SelectField = ({
         <Icon
           className="options-box-toggler"
           isButton
-          onClick={() => setIsOptionsOpen(!isOptionsOpen)}
+          onClick={handleOptionsBoxPresence}
           children={isOptionsOpen ? <IoMdArrowDropdown /> : <IoMdArrowDropup />}
         />
       </div>
@@ -137,42 +142,24 @@ const SelectField = ({
             top: inputRef.current ? inputRef.current.clientHeight + 10 : 0,
           }}
         >
-          {searchable ? (
+          {isSearchable ? (
             <SearchInput onChange={(value: string) => setSearchTerm(value)} />
           ) : null}
           <div className="options">
             {optionsData.map((option: ISelectFieldOption) => {
-              const { id, label, image } = option;
-
               return (
-                <div
-                  key={id}
-                  className="option"
-                  onClick={() => handleSelection(id)}
-                >
-                  <Icon
-                    className={clsx(
-                      selectedIds.includes(id)
-                        ? "checked-icon"
-                        : "unchecked-icon"
-                    )}
-                    children={
-                      selectedIds.includes(id) ? (
-                        <MdCheckBox />
-                      ) : (
-                        <MdCheckBoxOutlineBlank />
-                      )
-                    }
-                  />
-                  {image ? <img src={image} alt={label} /> : null}
-                  <span>{label}</span>
-                </div>
+                <Option
+                  isSelected={selectedIds.includes(option.id)}
+                  key={option.id}
+                  option={option}
+                  onClick={(id: number) => handleSelection(id)}
+                />
               );
             })}
           </div>
           {onApply ? (
             <Button
-              btnType="button"
+              buttonType="button"
               text="Apply"
               onClick={() => onApply(selectedIds)}
             />
@@ -186,12 +173,7 @@ const SelectField = ({
         </div>
       ) : null}
       {isOptionsOpen ? (
-        <div
-          className="back"
-          onClick={(e) => {
-            setIsOptionsOpen(false);
-          }}
-        />
+        <div className="back" onClick={handleOptionsBoxPresence} />
       ) : null}
     </div>
   );

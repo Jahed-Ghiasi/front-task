@@ -1,4 +1,4 @@
-import Button from "src/app/components/common/button";
+import Button from "src/app/components/common/Button";
 import "./styles.css";
 
 const StatusBar = () => {
@@ -15,7 +15,7 @@ const StatusBar = () => {
         <span className="status-title">Estimated processing</span>
         <span className="status-des">4-5 business days</span>
       </div>
-      <Button btnType="button" text="View status" fullWidth />
+      <Button buttonType="button" text="View status" isFullWidth />
     </div>
   );
 };

@@ -8,13 +8,13 @@ interface IProps {
   children?: ReactNode;
   className?: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  btnType?: "button" | "reset" | "submit";
+  buttonType?: "button" | "reset" | "submit";
   disabled?: boolean;
   title?: string;
-  fullWidth?: boolean;
+  isFullWidth?: boolean;
   style?: React.CSSProperties;
-  width?: string | number;
-  height?: string | number;
+  width?: string;
+  height?: string;
 }
 
 const Button = ({
@@ -23,10 +23,10 @@ const Button = ({
   children,
   className,
   onClick,
-  btnType = "button",
+  buttonType = "button",
   disabled,
   title,
-  fullWidth,
+  isFullWidth,
   height,
   style,
   width,
@@ -35,11 +35,11 @@ const Button = ({
     <button
       className={clsx("btn", type, className)}
       onClick={onClick}
-      type={btnType}
+      type={buttonType}
       disabled={disabled}
       title={title}
       style={{
-        width: fullWidth ? "100%" : width,
+        width: isFullWidth ? "100%" : width,
         height: height,
         ...style,
       }}

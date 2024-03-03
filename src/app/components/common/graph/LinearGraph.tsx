@@ -1,9 +1,9 @@
 import { Line } from "react-chartjs-2";
-import { CategoryScale, ChartOptions } from "chart.js";
+import { CategoryScale, ChartData, ChartOptions } from "chart.js";
 import Chart from "chart.js/auto";
 
 interface IProps {
-  data: any;
+  data: ChartData<"line">;
   options?: ChartOptions<"line">;
 }
 

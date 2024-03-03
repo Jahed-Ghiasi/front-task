@@ -5,7 +5,7 @@ import { Form, Formik } from "formik";
 import SelectField, {
   ISelectFieldOption,
 } from "src/app/components/common/SelectField";
-import Button from "src/app/components/common/button";
+import Button from "src/app/components/common/Button";
 import { useAppContext } from "src/app/utils/context";
 
 interface IInit {
@@ -117,19 +117,19 @@ const AddToDoModal = () => {
                 options={select_options}
                 onChange={(value: number[]) => setFieldValue("persons", value)}
                 multiSelect
-                searchable
+                isSearchable
                 showSelecteds
               />
             </div>
             <div className="btns">
               <Button
-                btnType="button"
+                buttonType="button"
                 text="Cancel"
                 type="outlined"
                 onClick={CloseModal}
               />
               <Button
-                btnType="button"
+                buttonType="button"
                 text="Accept"
                 onClick={() => handleSubmit()}
               />

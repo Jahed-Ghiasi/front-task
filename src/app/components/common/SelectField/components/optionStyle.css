@@ -1,0 +1,20 @@
+.options .option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.options .option .checked-icon {
+  font-size: 20px;
+  color: var(--primary-color);
+}
+
+.options .option .unchecked-icon {
+  font-size: 20px;
+}
+
+.options .option img {
+  width: 25px;
+  height: 25px;
+}

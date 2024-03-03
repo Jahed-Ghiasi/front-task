@@ -42,25 +42,6 @@
   max-width: 85%;
 }
 
-.select .input .selected-options .selected-option {
-  font-size: 12px;
-  padding: 2px 4px;
-  border-radius: 10px;
-  background-color: var(--primary-color-light-1);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.select .input .selected-options .selected-option img {
-  width: 25px;
-  height: 25px;
-}
-
-.select .input .selected-options .selected-option .remove-btn {
-  font-size: 12px;
-}
-
 .select .input .options-box-toggler {
   padding: 0 0.5rem;
   font-size: 20px;
@@ -88,27 +69,6 @@
   gap: 1rem;
   max-height: 150px;
   overflow: auto;
-}
-
-.select .options .option {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  cursor: pointer;
-}
-
-.select .options .option .checked-icon {
-  font-size: 20px;
-  color: var(--primary-color);
-}
-
-.select .options .option .unchecked-icon {
-  font-size: 20px;
-}
-
-.select .options .option img {
-  width: 25px;
-  height: 25px;
 }
 
 .select .back {
