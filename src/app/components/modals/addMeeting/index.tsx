@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import Modal from "src/app/components/common/modal";
 import { useAppContext } from "src/app/utils/context";
 import "./styles.css";
@@ -239,9 +239,7 @@ const AddMeetingModal = () => {
                         <div className="preview-item">
                           <span className="key">Date: </span>
                           <span className="value">
-                            {values.date
-                              ? new Date(values.date).toLocaleString("IR-fa")
-                              : null}
+                            {values.date ? dateString(values.date) : null}
                           </span>
                         </div>
                         <div className="preview-item">
