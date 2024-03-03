@@ -12,7 +12,6 @@ interface IProps {
   disabled?: boolean;
   title?: string;
   isFullWidth?: boolean;
-  style?: React.CSSProperties;
   width?: string;
   height?: string;
 }
@@ -28,7 +27,6 @@ const Button = ({
   title,
   isFullWidth,
   height,
-  style,
   width,
 }: IProps) => {
   return (
@@ -41,7 +39,6 @@ const Button = ({
       style={{
         width: isFullWidth ? "100%" : width,
         height: height,
-        ...style,
       }}
     >
       {text || children}
