@@ -4,7 +4,7 @@ import { useAppContext } from "src/app/utils/context";
 import "./styles.css";
 import clsx from "clsx";
 import { Form, Formik } from "formik";
-import Button from "src/app/components/common/Button";
+import Button from "src/app/components/common/button";
 import * as Yup from "yup";
 import RadioField from "src/app/components/common/RadioField";
 import { BiSolidConversation } from "react-icons/bi";

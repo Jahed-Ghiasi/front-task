@@ -6,7 +6,7 @@ import { HiOutlineReceiptTax } from "react-icons/hi";
 import { IoPersonOutline } from "react-icons/io5";
 import DashboardMeetingCard from "src/app/components/dashboard/dashboardMeetingCard/dashboardMeetingCard";
 import SectionHead from "src/app/components/common/sectionHead";
-import Button from "src/app/components/common/Button";
+import Button from "src/app/components/common/button";
 import LinearGraph from "src/app/components/common/graph/LinearGraph";
 import { ChartOptions } from "chart.js";
 import StatisticsCard from "src/app/components/dashboard/statisticsCard/StatisticsCard";

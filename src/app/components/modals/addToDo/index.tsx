@@ -5,7 +5,7 @@ import { Form, Formik } from "formik";
 import SelectField, {
   ISelectFieldOption,
 } from "src/app/components/common/SelectField";
-import Button from "src/app/components/common/Button";
+import Button from "src/app/components/common/button";
 import { useAppContext } from "src/app/utils/context";
 
 interface IInit {

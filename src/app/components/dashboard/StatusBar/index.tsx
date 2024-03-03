@@ -1,4 +1,4 @@
-import Button from "src/app/components/common/Button";
+import Button from "src/app/components/common/button";
 import "./styles.css";
 
 const StatusBar = () => {

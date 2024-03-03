@@ -4,7 +4,7 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import SearchInput from "../SearchInput";
 import clsx from "clsx";
-import Button from "../Button";
+import Button from "../button";
 import Icon from "../icon";
 import Option from "./components/Option";
 import SelectedOption from "./components/SelectedOption";
