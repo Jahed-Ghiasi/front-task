@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import Modal from "src/app/components/common/modal";
 import { useAppContext } from "src/app/utils/context";
 import "./styles.css";
@@ -42,7 +42,7 @@ const stages: TStage[] = [
   },
 ];
 
-const date_options = [
+const dateOptions = [
   {
     id: 1,
     icon: <BiSolidConversation />,
@@ -60,7 +60,7 @@ const date_options = [
   },
 ];
 
-const course_options = [
+const courseOptions = [
   {
     id: 1,
     icon: <TbTargetArrow />,
@@ -98,7 +98,7 @@ const AddMeetingModal = () => {
     course: 0,
   };
 
-  const goBack = () => {
+  const goBack = useCallback(() => {
     switch (stageTitle) {
       case stage_title.preview:
         setStageTitle(stage_title.course);
@@ -107,23 +107,33 @@ const AddMeetingModal = () => {
         setStageTitle(stage_title.email);
         break;
     }
-  };
+  }, [stageTitle]);
 
-  const handleContinue = (
-    handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void
-  ) => {
-    switch (stageTitle) {
-      case stage_title.email:
-        setStageTitle(stage_title.course);
-        break;
-      case stage_title.course:
-        setStageTitle(stage_title.preview);
-        break;
-      case stage_title.preview:
-        handleSubmit();
-        break;
-    }
-  };
+  const handleContinue = useCallback(
+    (
+      handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void
+    ) => {
+      switch (stageTitle) {
+        case stage_title.email:
+          setStageTitle(stage_title.course);
+          break;
+        case stage_title.course:
+          setStageTitle(stage_title.preview);
+          break;
+        case stage_title.preview:
+          handleSubmit();
+          break;
+      }
+    },
+    [stageTitle]
+  );
+
+  const getSelectedCoursePreview = useCallback((course: number) => {
+    const selectedCourse = courseOptions.find((c: any) => course === c.id);
+    return selectedCourse
+      ? `${selectedCourse.title} - ${selectedCourse.teacher}`
+      : "";
+  }, []);
 
   return (
     <Modal
@@ -165,7 +175,7 @@ const AddMeetingModal = () => {
                         />
                         <div className="">
                           <label className="vital-input">Date</label>
-                          {date_options.map((option: any) => {
+                          {dateOptions.map((option: any) => {
                             return (
                               <RadioField
                                 key={option.id}
@@ -191,7 +201,7 @@ const AddMeetingModal = () => {
                       <div className="fields">
                         <div className="">
                           <label className="vital-input">Course</label>
-                          {course_options.map((option: any) => {
+                          {courseOptions.map((option: any) => {
                             return (
                               <RadioField
                                 key={option.id}
@@ -237,13 +247,7 @@ const AddMeetingModal = () => {
                         <div className="preview-item">
                           <span className="key">Course: </span>
                           <span className="value">
-                            {course_options.find(
-                              (c: any) => values.course === c.id
-                            )?.title +
-                              " - " +
-                              course_options.find(
-                                (c: any) => values.course === c.id
-                              )?.teacher}
+                            {getSelectedCoursePreview(values.course)}
                           </span>
                         </div>
                       </div>

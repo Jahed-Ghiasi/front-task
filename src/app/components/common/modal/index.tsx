@@ -1,31 +1,32 @@
 import { CSSProperties, ReactNode, useEffect } from "react";
 import "./styles.css";
+import clsx from "clsx";
 
 export interface IModalProps {
   title?: string;
   visible?: boolean;
   onHiding: () => void;
-  width?: string | number;
-  height?: string | number;
-  min_height?: string | number;
-  max_height?: string | number;
+  width?: number;
+  height?: number;
+  minHeight?: number;
+  maxHeight?: number;
   children?: ReactNode;
   overflow?: string;
   backdrop?: boolean;
   className?: string;
-  backdropStyles?: CSSProperties;
+  backdropClassName?: CSSProperties;
 }
 
 const Modal = ({
   title,
   onHiding,
   backdrop,
-  backdropStyles,
+  backdropClassName,
   children,
   className,
   height,
-  max_height,
-  min_height,
+  maxHeight,
+  minHeight,
   overflow,
   visible,
   width,
@@ -40,24 +41,27 @@ const Modal = ({
     };
   }, [visible]);
 
-  const hideHandler = () => {
+  const handleHide = () => {
     if (backdrop) onHiding();
   };
 
   return visible ? (
     <div className="holder">
-      <div className="backdrop" onClick={hideHandler} style={backdropStyles} />
       <div
-        className={`main ${className}`}
+        className={clsx("backdrop", backdropClassName)}
+        onClick={handleHide}
+      />
+      <div
+        className={clsx("main", className)}
         style={{
           width: width || 200,
           height: height,
           overflow: overflow || "auto",
-          minHeight: min_height,
-          maxHeight: max_height,
+          minHeight: minHeight,
+          maxHeight: maxHeight,
         }}
       >
-        {title ? <h3>{title}</h3> : null}
+        {title && <h3>{title}</h3>}
         {children}
       </div>
     </div>

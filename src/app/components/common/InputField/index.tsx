@@ -1,6 +1,7 @@
 import { Field, FormikErrors, FormikTouched } from "formik";
 import clsx from "clsx";
 import "./styles.css";
+import { useCallback } from "react";
 
 interface IProps {
   type?: string;
@@ -31,6 +32,12 @@ const InputField = ({
   inputClassName,
   isMovingLabel,
 }: IProps) => {
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) =>
+      onChange && onChange(e.target.value),
+    [onChange]
+  );
+
   return (
     <div className="input-field">
       {label && !isMovingLabel ? (
@@ -48,7 +55,7 @@ const InputField = ({
         name={name}
         className={inputClassName}
         value={value}
-        onChange={(e: any) => onChange && onChange(e.target.value)}
+        onChange={handleChange}
       />
       {isMovingLabel ? (
         <span className="moving-label">{placeholder || label}</span>

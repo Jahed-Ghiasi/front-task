@@ -116,7 +116,7 @@ const AddToDoModal = () => {
                 value={values.persons}
                 options={select_options}
                 onChange={(value: number[]) => setFieldValue("persons", value)}
-                multiSelect
+                isMultiSelect
                 isSearchable
                 showSelecteds
               />

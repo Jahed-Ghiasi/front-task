@@ -21,7 +21,7 @@ interface IProps {
   onChange?: (value: number[]) => void;
   onApply?: (value: number[]) => void;
   value: number[];
-  multiSelect?: boolean;
+  isMultiSelect?: boolean;
   isSearchable?: boolean;
   showSelecteds?: boolean;
 }
@@ -31,7 +31,7 @@ const SelectField = ({
   onApply,
   options,
   value,
-  multiSelect,
+  isMultiSelect,
   label,
   isSearchable,
   showSelecteds,
@@ -76,11 +76,11 @@ const SelectField = ({
     return options.filter((option: ISelectFieldOption) =>
       selectedIds.includes(option.id)
     );
-  }, [selectedIds]);
+  }, [selectedIds, options]);
 
   const handleSelection = useCallback(
     (id: number) => {
-      if (multiSelect) {
+      if (isMultiSelect) {
         selectedIds.includes(id)
           ? removeSelected(id)
           : setSelectedIds([...selectedIds, id]);
@@ -88,7 +88,7 @@ const SelectField = ({
         selectedIds.includes(id) ? clearSelecteds() : setSelectedIds([id]);
       }
     },
-    [selectedIds, multiSelect]
+    [selectedIds, isMultiSelect]
   );
 
   const removeSelected = useCallback(

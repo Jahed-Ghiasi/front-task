@@ -89,7 +89,7 @@ const Dashboard = () => {
                 { id: 6, label: "MenuItem" },
                 { id: 7, label: "MenuItem" },
               ]}
-              multiSelect
+              isMultiSelect
               onApply={(value: number[]) => {
                 console.log(value);
               }}

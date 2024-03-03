@@ -2,16 +2,16 @@ import clsx from "clsx";
 import "./styles.css";
 
 interface IProps {
-  stages: TStage[];
+  stages: stage_type[];
   activeStage: string;
 }
 
-type TStage = { title: string; description: string };
+type stage_type = { title: string; description: string };
 
 const FormStagePresenter = ({ activeStage, stages }: IProps) => {
   return (
     <div className="stages-container">
-      {stages.map((stage: TStage, index: number) => {
+      {stages.map((stage: stage_type, index: number) => {
         const { description, title } = stage;
         return (
           <div
