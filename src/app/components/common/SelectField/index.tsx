@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import "./styles.css";
 import { MdCheckBox } from "react-icons/md";
 import { MdCheckBoxOutlineBlank } from "react-icons/md";
@@ -70,6 +70,12 @@ const SelectField = ({
     }
   }, [searchTerm]);
 
+  const allSelectedWithDetails: ISelectFieldOption[] = useMemo(() => {
+    return options.filter((option: ISelectFieldOption) =>
+      selectedIds.includes(option.id)
+    );
+  }, [selectedIds]);
+
   function handleSelection(id: number) {
     if (multiSelect) {
       selectedIds.includes(id)
@@ -100,25 +106,21 @@ const SelectField = ({
         </span>
         {selectedIds.length && showSelecteds ? (
           <div className="selected-options">
-            {options
-              .filter((option: ISelectFieldOption) =>
-                selectedIds.includes(option.id)
-              )
-              .map((option: ISelectFieldOption) => {
-                const { id, label, image } = option;
-                return (
-                  <div className="selected-option" key={id}>
-                    {image ? <img src={image} alt={label} /> : null}
-                    <span>{label}</span>
-                    <Icon
-                      isButton
-                      className="remove-btn"
-                      onClick={() => removeSelected(id)}
-                      children={<IoClose />}
-                    />
-                  </div>
-                );
-              })}
+            {allSelectedWithDetails.map((option: ISelectFieldOption) => {
+              const { id, label, image } = option;
+              return (
+                <div className="selected-option" key={id}>
+                  {image ? <img src={image} alt={label} /> : null}
+                  <span>{label}</span>
+                  <Icon
+                    isButton
+                    className="remove-btn"
+                    onClick={() => removeSelected(id)}
+                    children={<IoClose />}
+                  />
+                </div>
+              );
+            })}
           </div>
         ) : null}
         <Icon
@@ -148,14 +150,20 @@ const SelectField = ({
                   className="option"
                   onClick={() => handleSelection(id)}
                 >
-                  {selectedIds.includes(id) ? (
-                    <Icon className="checked-icon" children={<MdCheckBox />} />
-                  ) : (
-                    <Icon
-                      className="unchecked-icon"
-                      children={<MdCheckBoxOutlineBlank />}
-                    />
-                  )}
+                  <Icon
+                    className={clsx(
+                      selectedIds.includes(id)
+                        ? "checked-icon"
+                        : "unchecked-icon"
+                    )}
+                    children={
+                      selectedIds.includes(id) ? (
+                        <MdCheckBox />
+                      ) : (
+                        <MdCheckBoxOutlineBlank />
+                      )
+                    }
+                  />
                   {image ? <img src={image} alt={label} /> : null}
                   <span>{label}</span>
                 </div>

@@ -17,6 +17,7 @@ import SelectField from "src/app/components/common/SelectField";
 import NotificationBar from "src/app/components/dashboard/NotificationBar";
 import StatusBar from "src/app/components/dashboard/StatusBar";
 import TodoList from "src/app/components/dashboard/TodoList";
+import { dateString } from "src/app/utils/index";
 
 const lineChartOptions: ChartOptions<"line"> = {
   plugins: {
@@ -165,6 +166,15 @@ const Dashboard = () => {
           <NotificationBar />
           <StatusBar />
           <TodoList todos={todos} />
+          <div className="notification">
+            <h3 className="notification-title">Board Meeting</h3>
+            <span className="notification-date">
+              {dateString(1710313189015)}
+            </span>
+            <p className="notification-des">
+              You have been invited to attend a meeting of thr board dirctore.
+            </p>
+          </div>
         </div>
       </div>
       <AddMeetingModal />
