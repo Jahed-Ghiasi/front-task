@@ -100,7 +100,7 @@ const AddToDoModal = () => {
         {({ values, touched, errors, handleSubmit, setFieldValue }) => (
           <Form className="addTodo-form">
             <div className="fields">
-              <InputField
+              <InputField<string>
                 placeholder="Write a Title"
                 isMovingLabel
                 inputClassName="title-input"

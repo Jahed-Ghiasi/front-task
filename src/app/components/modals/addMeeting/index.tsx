@@ -160,7 +160,7 @@ const AddMeetingModal = () => {
                   <div>
                     {stageTitle === stage_title.email ? (
                       <div className="fields">
-                        <InputField
+                        <InputField<string>
                           inputClassName="formInput"
                           label="Email"
                           required

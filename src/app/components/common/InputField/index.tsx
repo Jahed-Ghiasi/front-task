@@ -3,22 +3,22 @@ import clsx from "clsx";
 import "./styles.css";
 import { useCallback } from "react";
 
-interface IProps {
+interface IProps<T> {
   type?: string;
   label?: string;
   isMovingLabel?: boolean;
   required?: boolean;
   id: string;
   name: string;
-  value: any;
+  value: T;
   errors?: FormikErrors<any>;
   touched?: FormikTouched<any>;
-  onChange?: (value: any) => void;
+  onChange?: (value: T) => void;
   placeholder?: string;
   inputClassName?: string;
 }
 
-const InputField = ({
+const InputField = <T,>({
   type = "text",
   label,
   id,
@@ -31,10 +31,10 @@ const InputField = ({
   placeholder,
   inputClassName,
   isMovingLabel,
-}: IProps) => {
+}: IProps<T>) => {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) =>
-      onChange && onChange(e.target.value),
+      onChange && onChange(e.target.value as T),
     [onChange]
   );
 
