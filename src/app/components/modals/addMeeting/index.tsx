@@ -177,7 +177,7 @@ const AddMeetingModal = () => {
                           <label className="vital-input">Date</label>
                           {dateOptions.map((option: any) => {
                             return (
-                              <RadioField
+                              <RadioField<number>
                                 key={option.id}
                                 icon={option.icon}
                                 selected={values.date}
@@ -203,7 +203,7 @@ const AddMeetingModal = () => {
                           <label className="vital-input">Course</label>
                           {courseOptions.map((option: any) => {
                             return (
-                              <RadioField
+                              <RadioField<number>
                                 key={option.id}
                                 icon={option.icon}
                                 selected={values.course}

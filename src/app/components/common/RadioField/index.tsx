@@ -3,15 +3,21 @@ import "./styles.css";
 import Icon from "../icon";
 import { useCallback } from "react";
 
-interface IProps {
+interface IProps<T> {
   icon?: JSX.Element;
   title: JSX.Element;
-  value: any;
-  selected: any;
-  onChange?: (value: any) => void;
+  value: T;
+  selected: T;
+  onChange?: (value: T) => void;
 }
 
-const RadioField = ({ icon, title, value, selected, onChange }: IProps) => {
+const RadioField = <T,>({
+  icon,
+  title,
+  value,
+  selected,
+  onChange,
+}: IProps<T>) => {
   const handleChange = useCallback(
     () => onChange && onChange(value),
     [onChange]
