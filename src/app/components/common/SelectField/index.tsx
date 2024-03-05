@@ -39,38 +39,12 @@ const SelectField = ({
   const [optionsData, setOptionsData] = useState<ISelectFieldOption[]>(options);
   const [isOptionsOpen, setIsOptionsOpen] = useState<boolean>(false);
   const [selectedIds, setSelectedIds] = useState<number[]>(value);
-  const [searchTerm, setSearchTerm] = useState<string>("");
 
   const inputRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     onChange && onChange(selectedIds);
   }, [selectedIds]);
-
-  useEffect(() => {
-    if (!isSearchable) {
-      return;
-    }
-
-    if (!searchTerm) {
-      setOptionsData(options);
-      return;
-    }
-
-    const timeoutId = setTimeout(() => {
-      setOptionsData(
-        options.filter((item: ISelectFieldOption) => {
-          if (item.label.toLowerCase().includes(searchTerm.toLowerCase())) {
-            return item;
-          }
-        })
-      );
-    }, 1000);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [searchTerm]);
 
   const allSelectedWithDetails: ISelectFieldOption[] = useMemo(() => {
     return options.filter((option: ISelectFieldOption) =>
@@ -105,6 +79,20 @@ const SelectField = ({
     [isOptionsOpen]
   );
 
+  const handleSearch = useCallback(
+    (value: string) =>
+      setOptionsData(
+        options.filter((item: ISelectFieldOption) => {
+          if (item.label.toLowerCase().includes(value.toLowerCase())) {
+            return item;
+          }
+        })
+      ),
+    []
+  );
+
+  const clearSearch = useCallback(() => setOptionsData(options), []);
+
   return (
     <div className="select">
       <div ref={inputRef} className="input">
@@ -122,7 +110,7 @@ const SelectField = ({
                 <SelectedOption
                   key={option.id}
                   option={option}
-                  onRemove={(id: number) => removeSelected(id)}
+                  onRemove={removeSelected}
                 />
               );
             })}
@@ -143,7 +131,7 @@ const SelectField = ({
           }}
         >
           {isSearchable ? (
-            <SearchInput onChange={(value: string) => setSearchTerm(value)} />
+            <SearchInput onSearch={handleSearch} onClearSearch={clearSearch} />
           ) : null}
           <div className="options">
             {optionsData.map((option: ISelectFieldOption) => {
@@ -152,7 +140,7 @@ const SelectField = ({
                   isSelected={selectedIds.includes(option.id)}
                   key={option.id}
                   option={option}
-                  onClick={(id: number) => handleSelection(id)}
+                  onClick={handleSelection}
                 />
               );
             })}
