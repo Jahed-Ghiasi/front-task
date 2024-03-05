@@ -4,7 +4,7 @@ import "./dashboardInfoCard.css";
 interface IProps {
   icon: JSX.Element;
   title: string;
-  value: any;
+  value: string;
 }
 
 const DashboardInfoCard = ({ icon, title, value }: IProps) => {
